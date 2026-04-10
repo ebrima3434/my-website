@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Word Guess Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1 style="text-shadow: 0 15px 10px rgb(61, 59, 59);">🔤 Word Guess Puzzle</h1>
+
+    <div class="game-info">
+        <div class="category-display" id="category-name">Category: Nature</div>
+        <div class="level-display">Level <span id="current-level">1</span> | Score: <span id="total-score">0</span>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div class="category-select" id="category-select">
+            <button class="category-btn active" data-category="brainbust" style="background:linear-gradient(135deg, #05155e 0%, #764dd6 100%) ;
+                 font-size: 30px;
+                  font-weight: bold;
+                  box-shadow: 0 5px 3px rgb(54, 45, 45);
+                 ">🦁
+                Brain
+                Bust</button>
+
+        </div>
+    </div>
+    <!-- Win Modal -->
+    <div class="modal" id="win-modal">
+        <div class="modal-content">
+            <h2>🎉 Correct!</h2>
+            <p>The word was:</p>
+            <div class="word-reveal" id="win-word"></div>
+            <p>Score: <span id="win-score">0</span></p>
+            <button class="btn-primary" onclick="nextLevel()">Next Level ➡️</button>
+            <button class="btn-secondary" onclick="closeModal('win-modal'); newGame()">Play Again 🔄</button>
+        </div>
+    </div>
+
+    <!-- Lose Modal -->
+    <div class="modal" id="lose-modal">
+        <div class="modal-content">
+            <h2>😔 Game Over</h2>
+            <p>The word was:</p>
+            <div class="word-reveal" id="lose-word"></div>
+            <p>Better luck next time!</p>
+            <button class="btn-primary" onclick="closeModal('lose-modal'); newGame()">Try Again 🔄</button>
+        </div>
+    </div>
+
+    <!-- Level Select Modal -->
+    <div class="modal" id="level-modal">
+        <div class="modal-content">
+            <h2>📋 Select Level</h2>
+            <div id="level-buttons"></div>
+            <button class="btn-secondary" onclick="closeModal('level-modal')" style="margin-top: 20px;">Close</button>
+        </div>
+    </div>
+    <div class="word-display" id="word-display"></div>
+
+    <div class="hint-text" id="hint-text">Click a letter to guess!</div>
+
+    <div class="stats">
+        <div class="stat-box">
+            <div class="stat-value" id="wrong-guesses">0</div>
+            <div class="stat-label">Wrong</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value" id="max-wrong">6</div>
+            <div class="stat-label">Max Wrong</div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-value" id="level-score">0</div>
+            <div class="stat-label">Level Score</div>
+        </div>
+    </div>
+
+    <div class="keyboard" id="keyboard"></div>
+
+    <div class="controls">
+        <button class="btn-hint" id="hint-btn" onclick="useHint()">💡 Hint (-50 pts)</button>
+        <button class="btn-secondary" onclick="newGame()">🔄 New Word</button>
+        <button class="btn-primary" onclick="showLevelSelect()">📋 Levels</button>
+    </div>
+
+    </div>
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
